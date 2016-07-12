@@ -1,28 +1,29 @@
 db.fisicos.insert(
 	{
-		name: "",
-		yearBirth: 2122,
-		areas: []
+		name: "Albert Einstein",
+		birth: 1879,
+		death: 1955,
+		articles: 130,
+		insertedAt: new Date()
 	}
 )
-
 
 db.fisicos.insert(
 	{
-		name: "",
-		yearBirth: 2122,
-		areas: []
-	},
-	{
-		...
+		name: "Isaac Newton",
+		birth: 1642,
+		death: 1726,
+		articles: 130,
+		insertedAt: new Date()
 	}
 )
 
-
 db.fisicos.save(
 	{
-		name: "",
-		yearBirth: 2122,
-		areas: []
+		name: "James Clerk Maxwel",
+		birth: 1831,
+		death: 1879,
+		articles: 145,
+		insertedAt: new Date()
 	}
 )
