@@ -8,6 +8,7 @@ db.fisicos.insert(
 	}
 )
 
+
 db.fisicos.insert(
 	{
 		name: "Isaac Newton",
@@ -17,6 +18,7 @@ db.fisicos.insert(
 		insertedAt: new Date()
 	}
 )
+
 
 db.fisicos.save(
 	{
