@@ -1,25 +1,38 @@
-db.fisicos.find(
-	{
-		name: ""
-	}
-)
+db.fisicos.find().pretty()
 
 
-db.fisicos.find( { name: "", yearBirth: 2122 } )
+db.fisicos.find( { name: "Albert Einstein" } )
 
 
-// Formtando resultadoda query
-db.fisicos.find( { name: "" },	{ name: 1, yearBirth: 1	} )
+var cs = db.fisicos.find()
+cs.count()
+cs.hasNext()
+cs.next()
+cs.pretty()
 
 
-db.fisicos.find(
-	{ _id: ObjectID("")	},
-	{ _id: 0 }
-)
+// Formatando resultadoda query
+db.fisicos.find( { name: "James Clerk Maxwel" },	{ name: 1, yearBirth: 1	} )
 
+db.fisicos.find( { birth: 1831 }, { _id: 0 } )
+
+// Retorna todos os docs sem os campos birth e insertedAt
+db.fisicos.find( { }, { birth: 0, insertedAt: 0 }) 
 
 // Retorna o documento
 db.fisicos.findOne(
-	{ _id: ObjectID("")	},
+	{ _id: ObjectID("5785b497cad215ca1a52d273")	},
 	{ _id: 0 }
+)
+
+// Operadores lógicos
+db.fisicos.find( { death: { $not: 1955 } } )
+
+db.fisicos.find(
+	{ 
+		$or: [ 
+			{ birth: 1831 }, 
+			{ name: “Isaac Newton” } 
+		] 
+	}
 )

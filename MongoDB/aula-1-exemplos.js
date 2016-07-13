@@ -24,8 +24,6 @@ db.fisicos.save(
 	{
 		name: "James Clerk Maxwel",
 		birth: 1831,
-		death: 1879,
-		articles: 145,
-		insertedAt: new Date()
+		articles: 145
 	}
 )
