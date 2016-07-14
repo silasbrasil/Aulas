@@ -26,7 +26,7 @@ db.fisicos.findOne(
 )
 
 // Operadores lógicos
-db.fisicos.find( { death: { $not: 1955 } } )
+db.fisicos.find( { death: { $ne: 1955 } } )
 
 db.fisicos.find(
 	{ 
