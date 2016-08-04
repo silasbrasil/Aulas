@@ -23,6 +23,15 @@ Ao acessar o **-bash4.2$** digite:
 -bash4.2$ psql
 ```
 
+Testes
 
-*Referências*
+CREATE USER user_name SUPERUSER;
+\q
+
+
+sudo -i -u user_name 	// Altera o usuário para acesso
+psql -d postgres 		// Acesso o banco postgres com a conta do user_name acima
+
+
+**Referências**<br />
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-centos-7
