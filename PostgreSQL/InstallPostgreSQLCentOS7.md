@@ -10,7 +10,7 @@ $ sudo yum install postgresql-server
 Devido algumas políticas da família Red Hat o postgreSQL não inicia automaticamente. Para realizar a instalação completa ainda é necessário os seguinte passos:
 
 ```sh
-$ sudo service postgresql initdb
+$ sudo postgresql-setup initdb
 $ sudo systemctl enable postgresql.service
 $ sudo systemctl start postgresql
 ```
