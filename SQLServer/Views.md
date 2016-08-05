@@ -31,3 +31,12 @@ AS
   WHERE
     WHERE cidade = 'São José dos Patos';
 ```
+Na criação de VIEWS não é recomendado a utilização dos seguintes SELECTs, pois as VIEW não são atualizadas caso um novo dado seja inserido na tabela.
+<br />
+#### Boas práticas na criação de VIEWs 
+<br />
+* Crie VIEWs específicas e que seja de grande utilidade;
+* Se possível utilize índices, pois eles dão um grande aumento na performace das pesquisa;
+
+**Ainda preciso rever esse tópico**
+
