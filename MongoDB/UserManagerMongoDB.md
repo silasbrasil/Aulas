@@ -4,7 +4,7 @@ A gerência de usuário no MongoDb é baseada em regras (roles). Cada banco cria
 
 Vamos iniciar o MongoDB no modo default.
 
-Porta padrão: 27017
+Porta padrão: 27017 <br />
 Local de armazenamento: /data/db1
 ```sh
 $ mongod --port 27017 --dbpath /data/db1
@@ -26,10 +26,10 @@ Crie um usuário administrador, pois ele será responsável por gerenciar todos 
  })
 ```
 
-A regra utilizada acima é a _userAdminAnyDatabase_, ele foi aplicada ao banco _admin_. Uma lista de regras podem ser encontradas na documentação do MongoDB.<br />
-Usuário admin criado, agora saia do MongoDb e edit o arquivo `/etc/mongod.config`, configure as seguinte partes. Essa configuração será responsável por rodar o MongoDB no modo de autorização, permitir requisições externas e fazer o mongod rodar no background.
+A regra utilizada acima é a __userAdminAnyDatabase__, ele foi aplicada ao banco __admin__. Uma lista de regras pode ser encontrada na documentação do MongoDB.<br /><br />
+Com o usuário __admin__ criado, agora saia do MongoDB e edit o arquivo `/etc/mongod.config`, configure as seguinte partes.
 
-```json
+```js
 storage:
 	dbPath: /data/db1
 	journal:
@@ -37,7 +37,7 @@ storage:
 
 net:
 	port: 27017
-	bindIp: [_privateIP_, _publicIP_, 127.0.0.1]
+	bindIp: [privateIP, publicIP, 127.0.0.1]
 
 processManagement:
 	fork: true
@@ -45,24 +45,25 @@ processManagement:
 security:
 	authorization: enabled
 ```
+Essa configuração será responsável por rodar o MongoDB no modo de autorização, permitir requisições externas e fazer o mongod rodar no background.
 
-Agora reinicie o MongoDB com as novas configurações
+Agora reinicie o MongoDB com as novas configurações.
 ```sh
 $ mongod --config /etc/mognod.config
 ```
 
-Acesse o MongoDB com o modo de autenticação
+Acesse o MongoDB com o modo de autenticação.
 ```sh
 $ mongo --port 27017 -u "admin" -p "sua_senha_secreta" --autheticationDatabase "admin"
 ```
 
-Autentique o usuário admin
+Autentique o usuário __admin__.
 ```js
 > use admin
 > db.auth({"admin", "sua_senha_secreta"})
 ```
 
-Para criar outros usuário em algum outro banco de dados é só fazer o seguinte:
+Para criar outros usuários em algum outro banco de dados é só fazer o seguinte.
 ```js
 > use outro_banco
 > db.createUser({
@@ -75,5 +76,5 @@ Para criar outros usuário em algum outro banco de dados é só fazer o seguinte
 ```
 
 ### Referências:
-https://docs.mongodb.com/manual/tutorial/enable-authentication/
+https://docs.mongodb.com/manual/tutorial/enable-authentication/ <br />
 https://docs.mongodb.com/manual/reference/built-in-roles/
