@@ -2,12 +2,32 @@
 
 A gerência de usuário no MongoDb é baseada em regras (roles). Cada banco criado no MongoDB pode ter várias regras, portanto, cada usuário poderá manupular o banco de acordo com a regra no qual ele pertence.
 
-Vamos iniciar o MongoDB no modo default.
-
-Porta padrão: 27017 <br />
-Local de armazenamento: /data/db1
+Vamos iniciar o MongoDB no modo default. Primeiro crie o local de armazenamento em /data/db1 e depois inicie o MongoDB.
 ```sh
-$ mongod --port 27017 --dbpath /data/db1
+$ sudo service mongod stop
+$ sudo mkdir -p /data/db1
+$ sudo mkdir -p /log/mongod.log
+$ sudo chwon -R mongodb:mongodb /data/db1
+$ sudo chwon -R mongodb:mongodb /log/mongod.log
+```
+Configure os seguintes campos do arquivo `/etc/mongod.conf` para iniciar em /data/db1 e no modo daemon.
+```js
+storage:
+	dbPath: /data/db1
+	journal:
+		enable: true
+
+systemLog:
+	destination: file
+	logAppend: true
+	path: /log/mongod.log
+
+processManagement:
+	fork: true
+```
+
+```sh
+$ sudo mongod --config /etc/mongod.conf
 ```
 
 Acesse o MongoDB
@@ -49,7 +69,7 @@ Essa configuração será responsável por rodar o MongoDB no modo de autorizaç
 
 Agora reinicie o MongoDB com as novas configurações.
 ```sh
-$ mongod --config /etc/mognod.config
+$ mongod --config /etc/mognod.conf
 ```
 
 Acesse o MongoDB com o modo de autenticação.
